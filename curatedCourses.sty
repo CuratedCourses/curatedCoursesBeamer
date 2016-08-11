@@ -1,0 +1,147 @@
+% (c) 2016 Rachael Verbruggen
+%
+%% This program can be redistributed and/or modified under the terms
+%% of the LaTeX Project Public License Distributed from CTAN archives
+%% in directory macros/latex/base/lppl.txt.
+% 
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{curatedCourses}
+  [2016/08/11 v0.0.01 CuratedCourses beamer package]
+
+\PassOptionsToClass{10pt,aspectratio=169,t}{beamer} % Size things appropriately
+
+\usefonttheme[onlymath]{serif} %sans serif font with serif math
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% packages 
+% Note: more can be included in your individual file if desired
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{amscd}							%standard
+\RequirePackage{amsmath}						%standard
+\RequirePackage{beamerthemeshadow}				%theme
+\RequirePackage{color}							%standard
+\RequirePackage{graphics}						%standard
+\RequirePackage{graphicx}						%standard
+\RequirePackage[skins,theorems,listings,]{tcolorbox}	%for the boxes
+\RequirePackage{tikz}							%for drawing images
+\RequirePackage{transparent}						%for footer
+
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,,    decorations.pathreplacing,decorations.pathmorphing,shapes, matrix,shapes.symbols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% color theme - checked for accessibility
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{sbase03}{HTML}{002B36} %dark blue/grey
+\definecolor{sbase02}{HTML}{073642} %dark blue/grey
+\definecolor{sbase01}{HTML}{586E75} %medium blue/grey
+\definecolor{sbase00}{HTML}{657B83} %medium blue/grey
+\definecolor{sbase0}{HTML}{839496} %medium grey/blue
+\definecolor{sbase1}{HTML}{93A1A1} %medium grey/blue
+\definecolor{sbase2}{HTML}{EEE8D5} %tan
+\definecolor{sbase3}{HTML}{FDF6E3} %sand
+%\definecolor{syellow}{HTML}{B58900} 
+%\definecolor{sorange}{HTML}{CB4B16}
+%\definecolor{sred}{HTML}{DC322F}
+%\definecolor{smagenta}{HTML}{D33682}
+%\definecolor{sviolet}{HTML}{6C71C4}
+%\definecolor{sblue}{HTML}{268BD2}
+%\definecolor{scyan}{HTML}{2AA198}
+%\definecolor{sgreen}{HTML}{859900}
+%%%%%%%%%%%%%%%%box colors%%%%%%%%%%%%
+\definecolor{sblue}{HTML}{2D54AC}
+\definecolor{sorange}{HTML}{ac6100}
+\definecolor{sgreen}{HTML}{138817}
+\definecolor{sred}{HTML}{ac2d54}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Beamer set up
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{navigation symbols}{}				%Remove nav symbols
+\setbeamertemplate{footline}{}						%Remove footer
+\setbeamertemplate{enumerate items}[square] 			%dark square box around white numbers
+
+\setbeamercolor{background canvas}{bg=white}		%white slides
+\setbeamercolor{frametitle}{fg=sorange,bg=white}		%plain frametitle
+\setbeamercolor{frametitle right}{bg=white}			%plain frametitle
+\setbeamercolor{normal text}{fg=sbase03}				%dark grey text
+\setbeamercolor{item projected}{bg=sbase03,fg=white}	%change colour of enumerate item
+\setbeamercolor{enumerate item}{fg=sbase03}			%change colour of enumerate item
+\setbeamercolor{caption name}{, fg=sbase03}
+
+
+%TITLE PAGE **** needs work
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]
+\date{}
+\setbeamertemplate{headline}[default]
+
+%%%%%%%%% footer %%%%%%%%%%%%
+\setbeamertemplate{footline}{
+\hfill \transparent{0.5}\includegraphics[scale=0.5,keepaspectratio]{logos/logo-good-smaller.png}}
+%\logo{\makebox[0.15\paperwidth]{{\transparent{0.5}\includegraphics[scale=0.5,keepaspectratio]{logo-good-smaller.png}}}}
+
+%%%%%%% LENGTHS
+\setlength{\parskip}{\baselineskip} %increases space between paragraphs
+
+%%%%%%%%%% emphasis
+\renewcommand{\emph}[1]{\textcolor{sblue}{\bf #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Boxes
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%  Definition box
+%  Usage: \begin{defn} Definition: "your text goes here" \end{defn}
+%
+\newtcolorbox{defn}{before upper=\textbf{Definition: },
+colframe=sblue,colback=white,boxrule=0.25mm, leftrule=3mm, coltext=sbase03}
+
+%
+%  Definition box - no word
+%  Usage: \begin{defn} your text goes here \end{defn}
+%
+\newtcolorbox{subdefn}{
+colframe=sblue,colback=white,boxrule=0.25mm, leftrule=3mm, coltext=sbase03}
+
+%
+%  Example box
+%  Usage: \begin{ex} Example goes here \end{ex}
+%
+\newtcolorbox{ex}{
+colframe=sgreen, bottomrule=1pt, rightrule=0pt, leftrule=0pt, titlerule=0em, colback=white, coltitle=white, coltext=sbase03, 
+}
+
+%
+%  Example box with word
+%  Usage: \begin{ex} Example "your text goes here \end{ex}
+%
+
+%
+\newtcolorbox{ex2}{before upper=\textbf{Example: \\},
+colframe=sgreen, bottomrule=1pt, rightrule=0pt, leftrule=0pt, titlerule=0em, colback=white, coltitle=white, coltext=sbase03, 
+}
+
+%
+% Theorem
+%  Usage: \begin{thm}{Theorem Titles goes here} Theorem goes here \end{thm}
+%
+\newtcolorbox{thm}[2][]{colback=white,
+colframe=sred,fonttitle=\bfseries, coltitle=white,
+colbacktitle=sred,enhanced,coltext=sbase03,
+attach boxed title to top center={yshift=-2mm},
+title=#2,#1}
+
+\endinput
+%%
+%% End of file `curatedCourses.sty'.
