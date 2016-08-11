@@ -16,10 +16,20 @@ Then you can use the CuratedCourses template as follows:
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%intro bumpter
+\begin{frame}[plain]
+\makebumperin
+\end{frame}
+
 \begin{frame}
 \frametitle{I'm the title}
 
 I'm the body.
+\end{frame}
+
+%outro bumper
+\begin{frame}[plain]
+\makebumperout
 \end{frame}
 
 \end{document}
