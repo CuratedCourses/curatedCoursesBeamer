@@ -9,9 +9,8 @@ git clone https://github.com/CuratedCourses/curatedCoursesBeamer.git
 Then you can use the CuratedCourses template as follows:
 
 ```latex
-\documentclass{beamer}
+\documentclass{curatedCoursesBeamer}
 
-\usepackage{curatedCourses}
 \usepackage{curatedCoursesLinearAlgebra}
 
 \begin{document}
